@@ -1,0 +1,526 @@
+Python 3.5.4 (v3.5.4:3f56838, Aug  8 2017, 02:17:05) [MSC v.1900 64 bit (AMD64)] on win32
+Type "copyright", "credits" or "license()" for more information.
+>>> s=["Print"]
+>>> s[::-1]
+['Print']
+>>> s="Print"
+>>> s
+'Print'
+>>> s[::-1]
+'tnirP'
+>>> s="Print   "
+>>> s.strip()
+'Print'
+>>> l = ['a', 'b', 123]
+>>> len(l)
+3
+>>> l=['a', 'b', 'c', 123, 234]
+>>> l
+['a', 'b', 'c', 123, 234]
+>>> l.append(300)
+>>> l
+['a', 'b', 'c', 123, 234, 300]
+>>> l
+['a', 'b', 'c', 123, 234, 300]
+>>> l1=[100,200,300]
+>>> l
+['a', 'b', 'c', 123, 234, 300]
+>>> l1
+[100, 200, 300]
+>>> l.extend(l1)
+>>> l
+['a', 'b', 'c', 123, 234, 300, 100, 200, 300]
+>>> l1
+[100, 200, 300]
+>>> l
+['a', 'b', 'c', 123, 234, 300, 100, 200, 300]
+>>> l1.extend(l)
+>>> l1
+[100, 200, 300, 'a', 'b', 'c', 123, 234, 300, 100, 200, 300]
+>>> l1
+[100, 200, 300, 'a', 'b', 'c', 123, 234, 300, 100, 200, 300]
+>>> l.insert(0,'Hello World')
+>>> l
+['Hello World', 'a', 'b', 'c', 123, 234, 300, 100, 200, 300]
+>>> l.insert(-1,'Hello World')
+>>> l
+['Hello World', 'a', 'b', 'c', 123, 234, 300, 100, 200, 'Hello World', 300]
+>>> n=len(l)
+>>> n
+11
+>>> l.insert(n,'Hello World')
+>>> l
+['Hello World', 'a', 'b', 'c', 123, 234, 300, 100, 200, 'Hello World', 300, 'Hello World']
+>>> l.remove(300)
+>>> l
+['Hello World', 'a', 'b', 'c', 123, 234, 100, 200, 'Hello World', 300, 'Hello World']
+>>> l.pop()
+'Hello World'
+>>> l
+['Hello World', 'a', 'b', 'c', 123, 234, 100, 200, 'Hello World', 300]
+>>> l.pop(0)
+'Hello World'
+>>> l
+['a', 'b', 'c', 123, 234, 100, 200, 'Hello World', 300]
+>>> l.pop(2)
+'c'
+>>> l
+['a', 'b', 123, 234, 100, 200, 'Hello World', 300]
+>>> l.index('Hello World')
+6
+>>> l.count(300)
+1
+>>> l=[100, 200, 300, 'a', 'b', 'c', 123, 234, 300, 100, 200, 300]
+>>> l.count(300)
+3
+>>> count=l.count(300)
+>>> count
+3
+>>> l.insert(index=1,value=100)
+Traceback (most recent call last):
+  File "<pyshell#46>", line 1, in <module>
+    l.insert(index=1,value=100)
+TypeError: insert() takes no keyword arguments
+>>> l
+[100, 200, 300, 'a', 'b', 'c', 123, 234, 300, 100, 200, 300]
+>>> l.sort()
+Traceback (most recent call last):
+  File "<pyshell#48>", line 1, in <module>
+    l.sort()
+TypeError: unorderable types: str() < int()
+>>> l=[123, 234, 100, 200]
+>>> l.sort()
+>>> l
+[100, 123, 200, 234]
+>>> l.reverse()
+>>> l
+[234, 200, 123, 100]
+>>> l=[123, 234, 100, 200]
+>>> l.sort(reverse=True)
+>>> l
+[234, 200, 123, 100]
+>>> l=[123, 234, 100, 200]
+>>> l.sort()
+>>> l
+[100, 123, 200, 234]
+>>> stack = [3, 4, 5]
+>>> stack
+[3, 4, 5]
+>>> stack.append(6)
+>>> stack
+[3, 4, 5, 6]
+>>> stack.append(7)
+>>> stack
+[3, 4, 5, 6, 7]
+>>> stack.pop()
+7
+>>> stack
+[3, 4, 5, 6]
+>>> queue = [3, 4, 5]
+>>> queue
+[3, 4, 5]
+>>> queue.append(6)
+>>> queue.append(7)
+>>> queue
+[3, 4, 5, 6, 7]
+>>> queue.pop(0)
+3
+>>> from collectons import deque
+Traceback (most recent call last):
+  File "<pyshell#74>", line 1, in <module>
+    from collectons import deque
+ImportError: No module named 'collectons'
+>>> from collections import deque
+>>> queue = deque(["Eric", "John", "Michael"])
+>>> queue
+deque(['Eric', 'John', 'Michael'])
+>>> queue.append('Hasan')
+>>> queue
+deque(['Eric', 'John', 'Michael', 'Hasan'])
+>>> queue.popleft
+<built-in method popleft of collections.deque object at 0x00000289E464B2B8>
+>>> queue.popleft()
+'Eric'
+>>> queue = deque(["Eric", "John", "Michael"])
+>>> queue.append('Hasan')
+>>> queue
+deque(['Eric', 'John', 'Michael', 'Hasan'])
+>>> queue.pop()
+'Hasan'
+>>> queue
+deque(['Eric', 'John', 'Michael'])
+>>> queue.popleft()
+'Eric'
+>>> queue
+deque(['John', 'Michael'])
+>>> def f(x):
+	return x % 3 == 0 or x % 5 == 0
+
+>>> f([3,6,9])
+Traceback (most recent call last):
+  File "<pyshell#94>", line 1, in <module>
+    f([3,6,9])
+  File "<pyshell#93>", line 2, in f
+    return x % 3 == 0 or x % 5 == 0
+TypeError: unsupported operand type(s) for %: 'list' and 'int'
+>>> filter(f,range(2,25))
+<filter object at 0x00000289E4655DD8>
+>>> list(filter(f,range(2,25)))
+[3, 5, 6, 9, 10, 12, 15, 18, 20, 21, 24]
+>>> range(10)
+range(0, 10)
+>>> list(range(10))
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> for r in range(10):
+	print(r)
+
+	
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+>>> l=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> 0 in l
+True
+>>> 10 in l
+False
+>>> l="hello"
+>>> l
+'hello'
+>>> list(l)
+['h', 'e', 'l', 'l', 'o']
+>>> l
+'hello'
+>>> 'o' in l
+True
+>>> l.index('o')
+4
+>>> l
+'hello'
+>>> def f(x):
+	return x % 2 == 0
+
+>>> f
+<function f at 0x00000289E463BAE8>
+>>> f(4)
+True
+>>> f(5)
+False
+>>> filter(f,range(1,100))
+<filter object at 0x00000289E4655E48>
+>>> result=filter(f,range(1,100))
+>>> result
+<filter object at 0x00000289E4655EF0>
+>>> list(result)
+[2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48, 50, 52, 54, 56, 58, 60, 62, 64, 66, 68, 70, 72, 74, 76, 78, 80, 82, 84, 86, 88, 90, 92, 94, 96, 98]
+>>> def cube(x): return x*x*x
+
+>>> map(cube,range(1,11))
+<map object at 0x00000289E4655E80>
+>>> list(map(cube,range(1,11)))
+[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]
+>>> def add(x,y): return x+y
+
+>>> add(5,6)
+11
+>>> seq=range(8)
+>>> list(map(add,seq,seq))
+[0, 2, 4, 6, 8, 10, 12, 14]
+>>> sq=[1,2,3]
+>>> sq2=[2,3,4]
+>>> result=map(add,sq,sq2)
+>>> list(result)
+[3, 5, 7]
+>>> add
+<function add at 0x00000289E463B9D8>
+>>> add(1,11)
+12
+>>> reduce(add,range(1,11))
+Traceback (most recent call last):
+  File "<pyshell#137>", line 1, in <module>
+    reduce(add,range(1,11))
+NameError: name 'reduce' is not defined
+>>> import functools as ft
+>>> ft.reduce(add,range(1,11))
+55
+>>> for x in range(10):
+	print(x*x)
+
+	
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+>>> square=[]
+>>> for x in range(10):
+	square.append(x*x)
+
+	
+>>> square
+[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> [x*x for x in range(1,11)]
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+>>> result=[x*x for x in range(1,11)]
+>>> result
+[1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+>>> result=[x*x*x for x in range(1,11)]
+>>> result
+[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000]
+>>> (10,20)
+(10, 20)
+>>> (20,10)
+(20, 10)
+>>> (x,y)
+Traceback (most recent call last):
+  File "<pyshell#154>", line 1, in <module>
+    (x,y)
+NameError: name 'y' is not defined
+>>> [(x,y) for x in [1,2,3] for y in [3,1,3]]
+[(1, 3), (1, 1), (1, 3), (2, 3), (2, 1), (2, 3), (3, 3), (3, 1), (3, 3)]
+>>> [(x,y) for x in [1,2,3] for y in [3,1,4]]
+[(1, 3), (1, 1), (1, 4), (2, 3), (2, 1), (2, 4), (3, 3), (3, 1), (3, 4)]
+>>> [(x,y) for x in [1,2,3] for y in [3,1,4] if x!=y]
+[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
+>>> for x in [1,2,3]:
+	for y in [3,1,4]:
+		if x !=y:
+			result.append((x,y))
+
+			
+>>> result
+[1, 8, 27, 64, 125, 216, 343, 512, 729, 1000, (1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
+>>> [(x,y) for x in [1,2,3] for y in [3,1,4] if x!=y]
+[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
+>>> [(x,y) for x in [1,2,3] for y in [3,1,4] if x !=y]
+[(1, 3), (1, 4), (2, 3), (2, 1), (2, 4), (3, 1), (3, 4)]
+>>> vec = [-4, -2, 0, 2, 4]
+>>> [for x in vec if x>0]
+SyntaxError: invalid syntax
+>>> [x for x in vec if x>0]
+[2, 4]
+>>> [abs(x) for x in vec if x>0]
+[2, 4]
+>>> [abs(x) for x in vec ]
+[4, 2, 0, 2, 4]
+>>> matrix=[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+>>> len(matrix)
+3
+>>> matrix[0]
+[1, 2, 3, 4]
+>>> matrix[1]
+[5, 6, 7, 8]
+>>> for i in range(len(matrix)):
+	print(i)
+
+	
+0
+1
+2
+>>> for i in range(len(matrix)):
+	matrix[i]
+
+	
+[1, 2, 3, 4]
+[5, 6, 7, 8]
+[9, 10, 11, 12]
+>>> for i in matrix:
+	print(i)
+
+	
+[1, 2, 3, 4]
+[5, 6, 7, 8]
+[9, 10, 11, 12]
+>>> for row in matrix:
+	print(row)
+
+	
+[1, 2, 3, 4]
+[5, 6, 7, 8]
+[9, 10, 11, 12]
+>>> for row in matrix:
+	print(row)
+
+	
+[1, 2, 3, 4]
+[5, 6, 7, 8]
+[9, 10, 11, 12]
+>>> for row in matrix:
+	for col in row:
+		print(col)
+
+		
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+>>> for row in matrix:
+	for col in range(len(row)):
+		print(row[col])
+
+		
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+>>> for row in range(len(matrix)):
+	for col in range(len(row)):
+		print(matrix[row][col])
+
+		
+Traceback (most recent call last):
+  File "<pyshell#195>", line 2, in <module>
+    for col in range(len(row)):
+TypeError: object of type 'int' has no len()
+>>> for row in range(len(matrix)):
+	for col in range(4):
+		print(matrix[row][col])
+
+		
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+>>> matrix=[[1,2,3,4],[5,6,7,8],[9,10,11,12]]
+>>> matrix
+[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+>>> matrix
+[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+>>> for row in matrix:
+	print(row)
+
+	
+[1, 2, 3, 4]
+[5, 6, 7, 8]
+[9, 10, 11, 12]
+>>> [row[i] for row in matrix ]
+Traceback (most recent call last):
+  File "<pyshell#204>", line 1, in <module>
+    [row[i] for row in matrix ]
+  File "<pyshell#204>", line 1, in <listcomp>
+    [row[i] for row in matrix ]
+TypeError: list indices must be integers or slices, not list
+>>> [[row[i] for row in matrix ] for i in range(4) ]
+[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+>>> [row for row in matrix]
+[[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
+>>> [[row[i] for row in matrix] for i in range(4)]
+[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+>>> transposedMat=[[row[i] for row in matrix] for i in range(4)]
+>>> transposedMat
+[[1, 5, 9], [2, 6, 10], [3, 7, 11], [4, 8, 12]]
+>>> lambda a,b: a+b
+<function <lambda> at 0x00000289E463BEA0>
+>>> f=lambda a,b: a+b
+>>> f(2,3)
+5
+>>> myFunction= lambda a,b: a+b
+>>> type(myFunction)
+<class 'function'>
+>>> myFunction(8,7)
+15
+>>> def incrementor(n):
+	return lambda x:x+n
+
+>>> f=incrementor(42)
+>>> f(0)
+42
+>>> f(1)
+43
+>>> f=incrementor(4)
+>>> f(1)
+5
+>>> pairs=[(1,'One'),(2,'Two'),(3,'Three'),(4,'Four')]
+>>> t=(1,'One')
+>>> t[0]
+1
+>>> t[1]
+'One'
+>>> t[0]=10
+Traceback (most recent call last):
+  File "<pyshell#228>", line 1, in <module>
+    t[0]=10
+TypeError: 'tuple' object does not support item assignment
+>>> l=[10,20]
+>>> l[0]
+10
+>>> l[0]=30
+>>> l
+[30, 20]
+>>> str1="Hello"
+>>> str1[0]='E'
+Traceback (most recent call last):
+  File "<pyshell#234>", line 1, in <module>
+    str1[0]='E'
+TypeError: 'str' object does not support item assignment
+>>> str1="Hello"
+>>> str2='E'+str1[1:]
+>>> str2
+'Eello'
+>>> pairs=[(1,'One'),(2,'Two'),(3,'Three'),(4,'Four')]
+>>> pairs[0]
+(1, 'One')
+>>> pairs[0][0]
+1
+>>> pairs[0][1]
+'One'
+>>> pairs=[(1,'One'),(2,'Two'),(3,'Three'),(4,'Four')]
+>>> pairs.sort()
+>>> pairs
+[(1, 'One'), (2, 'Two'), (3, 'Three'), (4, 'Four')]
+>>> pairs.sort(reverse=True)
+>>> pairs
+[(4, 'Four'), (3, 'Three'), (2, 'Two'), (1, 'One')]
+>>> pairs=[(1,'One'),(2,'Two'),(3,'Three'),(4,'Four')]
+>>> pairs
+[(1, 'One'), (2, 'Two'), (3, 'Three'), (4, 'Four')]
+>>> pairs.sort(key=lambda pair:pair[1])
+>>> pairs
+[(4, 'Four'), (1, 'One'), (3, 'Three'), (2, 'Two')]
+>>> pairs=[(1,20),(2,10),(3,1),(4,-4)]
+>>> pairs.sort(key=lambda pair:pair[1])
+>>> pairs
+[(4, -4), (3, 1), (2, 10), (1, 20)]
+>>> pairs=[(1,20),(2,10),(3,1),(4,0)]
+>>> pairs.sort(key=lambda pair:pair[1])
+>>> pairs
+[(4, 0), (3, 1), (2, 10), (1, 20)]
+>>> pairs.sort(key=lambda pair:pair[0])
+>>> pairs
+[(1, 20), (2, 10), (3, 1), (4, 0)]
+>>> 
